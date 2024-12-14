@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_training/screens/about_screen.dart';
 import 'package:flutter_training/widgets/faculty_card.dart';
+import 'package:flutter_training/widgets/heading.dart';
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({super.key});
@@ -50,24 +51,10 @@ class HomeWidget extends StatelessWidget {
                     },
                   ),
                 );
-
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) {
-                //       return AboutScreen();
-                //     },
-                //   ),
-                // );
               },
               child: Text("View More"),
             ),
-            Text(
-              "Our Faculties",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
+            Heading(text: "Our Faculties"),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -85,6 +72,38 @@ class HomeWidget extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            SizedBox(height: 30),
+            Heading(text: "Our Courses"),
+            SizedBox(height: 15),
+            GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "BCA",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Text(
+                        "Bachelor in Computer Application",
+                        style: TextStyle(fontSize: 20),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),
