@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_training/screens/about_screen.dart';
+import 'package:flutter_training/widgets/course_card.dart';
 import 'package:flutter_training/widgets/faculty_card.dart';
 import 'package:flutter_training/widgets/heading.dart';
 
@@ -37,22 +38,45 @@ class HomeWidget extends StatelessWidget {
           ),
         ]),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return AboutScreen();
-                    },
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 235, 232, 232),
+              ),
+              child: Column(
+                children: [
+                  const Text(
+                    "WELCOME TO THE COLLEGE",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                );
-              },
-              child: Text("View More"),
+                  const SizedBox(height: 10),
+                  const Text(
+                    "Padma Kanya Multiple Campus (PKMC) was established in 1951(Aswin 2008 B.S.) as first women’s campus of Nepal. Initially, its academic activities were brought into operation at the present location of Kanya School, Dillibazar. King Tribhuvan inaugurated the campus. The then Prime Minister (Head of the Government) Mohan Shamsher Rana, Finance Minister Subarna Sumsher Rana, Home Minister B. P. Koirala, Minister of Education, Nripa Jung Rana, and the social workers of the time were present on the occasion. At the time establishment, its academic programme started in eight subjects of humanities.",
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return AboutScreen();
+                          },
+                        ),
+                      );
+                    },
+                    child: const Text(" + ReadMore"),
+                  ),
+                ],
+              ),
             ),
             Heading(text: "Our Faculties"),
             SingleChildScrollView(
@@ -79,29 +103,30 @@ class HomeWidget extends StatelessWidget {
             GridView.count(
               crossAxisCount: 2,
               shrinkWrap: true,
+              mainAxisSpacing: 20,
+              crossAxisSpacing: 20,
+              childAspectRatio: 0.8,
+              physics: NeverScrollableScrollPhysics(),
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "BCA",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        "Bachelor in Computer Application",
-                        style: TextStyle(fontSize: 20),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
+                CourseCard(
+                  title: "BCA",
+                  subtitle: "Bachelor in Computer Application",
+                ),
+                CourseCard(
+                  title: "Bsc.CSIT",
+                  subtitle: "Bachelor of Computer Science and Information Technology",
+                ),
+                CourseCard(
+                  title: "BBS",
+                  subtitle: "Bachelor of Business Study",
+                ),
+                CourseCard(
+                  title: "BSW",
+                  subtitle: "Bachelor of Social Work",
+                ),
+                CourseCard(
+                  title: "BIT",
+                  subtitle: "Bachelor of Information Technology",
                 ),
               ],
             ),
