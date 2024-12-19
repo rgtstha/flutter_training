@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_training/models/event.dart';
 import 'package:flutter_training/screens/about_screen.dart';
 import 'package:flutter_training/widgets/course_card.dart';
+import 'package:flutter_training/widgets/event_tile.dart';
 import 'package:flutter_training/widgets/faculty_card.dart';
 import 'package:flutter_training/widgets/heading.dart';
 
@@ -129,6 +131,21 @@ class HomeWidget extends StatelessWidget {
                   subtitle: "Bachelor of Information Technology",
                 ),
               ],
+            ),
+            Heading(text: "Events"),
+            ListView.builder(
+              itemCount: events.length,
+              shrinkWrap: true,
+              itemBuilder: (BuildContext context, int index) {
+                Event abc = events[index];
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: EventTile(
+                    title: abc.title,
+                    description: abc.description,
+                  ),
+                );
+              },
             ),
           ],
         ),
